@@ -81,3 +81,6 @@ grand_mas(X):- grand_ma(Y, X), print(Y), nl, fail.
 
 grand_ma_and_da(X,Y):- woman(X), woman(Y), parent(X,Z), parent(Z,Y).
 grand_ma_and_da(Y,X):- woman(X), woman(Y), parent(X,Z), parent(Z,Y).
+
+aunt(X,Y):- woman(X), parent(P,X), parent(P,Z), parent(Z, Y), man(P).
+aunts(X):- aunt(Y,X), print(Y), nl, fail.
