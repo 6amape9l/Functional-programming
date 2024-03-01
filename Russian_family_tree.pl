@@ -78,3 +78,6 @@ husband(X):- husband(Y, X), print(Y), nl, !, fail.
 
 grand_ma(X, Y):- woman(X), parent(X,Z), parent(Z,Y).
 grand_mas(X):- grand_ma(Y, X), print(Y), nl, fail.
+
+grand_ma_and_da(X,Y):- woman(X), woman(Y), parent(X,Z), parent(Z,Y).
+grand_ma_and_da(Y,X):- woman(X), woman(Y), parent(X,Z), parent(Z,Y).
