@@ -67,3 +67,6 @@ b_s(X):- b_s(X, Y), X\=Y, print(Y), nl, fail.
 
 daughter(X, Y):- woman(X), parent(Y, X).
 daughter(X):- daughter(Y, X), print(Y), nl, fail.
+
+husband(X, Y):- man(X), woman(Y), parent(X, Z), parent(Y, Z).
+husband(X):- husband(Y, X), print(Y), nl, !, fail.
