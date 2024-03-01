@@ -21,6 +21,11 @@ woman(bozhedara).
 woman(broneslava).
 woman(veselina).
 woman(zdislava).
+woman(grand_goluba).
+woman(grand_voen).
+
+parent(grand_voen,voeneg).
+parent(grand_goluba,goluba).
 
 parent(voeneg,ratibor).
 parent(voeneg,bratislava).
@@ -70,3 +75,6 @@ daughter(X):- daughter(Y, X), print(Y), nl, fail.
 
 husband(X, Y):- man(X), woman(Y), parent(X, Z), parent(Y, Z).
 husband(X):- husband(Y, X), print(Y), nl, !, fail.
+
+grand_ma(X, Y):- woman(X), parent(X,Z), parent(Z,Y).
+grand_mas(X):- grand_ma(Y, X), print(Y), nl, fail.
