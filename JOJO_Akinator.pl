@@ -115,18 +115,33 @@ question1(X1):-	write("In what country was the character born?"),nl,
 				write("2. Germany"),nl,
 				write("1. Italy"),nl,
 				write("0. England"),nl,
-				read(X1).
+				read(X1),
+                unik_chek1(X,X1),
+                write(X).
 
 question2(X2):-	write("What gender is the character?"),nl,
 				write("1. Female"),nl,
 				write("0. Male"),nl,
-				read(X2).
+				read(X2),
+                unik_chek2(X,X2),
+                write(X).
 
 question3(X3):-	write("Is this the main character?"),nl,
 				write("1. Yes"),nl,
 				write("0. NO"),nl,
-				read(X3).
+				read(X3),
+                unik_chek3(X,X3),
+                write(X).
 		
+main_loop:- ask_question, 
+
+unik_chek1(X,X1):- country(X,X1), country(Y,X1), 
+                X=\=Y, !, fail.
+unik_chek1(X):- country(X,X1).
+
+unik_chek2(X):- country(X,X1), country(Y,X1),
+                gender(X,X1), gender(Y,X1), 
+                X=\=Y, fail.
 
 pr:-	question1(X1), question2(X2),question3(X3),
         country(X,X1),gender(X,X2),main(X,X3),
