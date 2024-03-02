@@ -1,5 +1,6 @@
-
-%consult("Russian_family_tree").
+/*
+consult("Russian_family_tree").
+*/
 
 man(voeneg).
 man(voe).
