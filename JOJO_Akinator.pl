@@ -1,151 +1,176 @@
 /*country
 consult("JOJO_Akinator.pl").
 */
-          
-country(jonathan_joestar, 0).
-country(dio_brando, 0).
-country(robert_e_o_speedwagon, 0).
-country(will_a_zeppel, 1).
-country(erina_pendleton, 0).
-country(joseph_joestar, 0).
-country(rudol_von_stroheim, 2).
-country(caesar_anthonio_zeppeli, 1).
-country(esidisi, 3).
-country(wamuu, 3).
-country(kars, 3).
-country(lisa_lisa, 1).
-country(suzi_q, 5).
-country(jotaro_kujo, 4).
-country(mohammed_avdol, 6).
-country(noriaki_kakyoin, 4).
-country(jean_pierre_polnareff, 6).
-country(iggy, 6).
-country(josuke_higashikata, 4).
-country(yoshikage_kira, 0).
-country(koichi_hirose, 4).
-country(okuyasu_nijimura, 4).
-country(rohan_kishibe, 4).
-country(giorno_giovanna, 1).
-country(bruno_bucciarati, 1).
-country(leone_abbacchio, 1).
-country(guido_mista, 1).
-country(narancia_ghirga, 1).
-country(pannacotta_fugo, 1).
-country(trish_una, 1).
-country(diavolo, 1).
-country(jolyne_cujoh, 5).
-country(enrico_pucci, 5).
-country(emporio_alnino, 5).
 
-gender(jonathan_joestar, 0).
-gender(dio_brando, 0).
-gender(robert_e_o_speedwagon, 0).
-gender(will_a_zeppel, 0).
-gender(erina_pendleton, 1).
-gender(joseph_joestar, 0).
-gender(rudol_von_stroheim, 0).
-gender(caesar_anthonio_zeppeli, 0).
-gender(esidisi, 0).
-gender(wamuu, 0).
-gender(kars, 0).
-gender(lisa_lisa, 1).
-gender(suzi_q, 1).
-gender(jotaro_kujo, 0).
-gender(mohammed_avdol, 0).
-gender(noriaki_kakyoin, 0).
-gender(jean_pierre_polnareff, 0).
-gender(iggy, 0).
-gender(josuke_higashikata, 0).
-gender(yoshikage_kira, 0).
-gender(koichi_hirose, 0).
-gender(okuyasu_nijimura, 0).
-gender(rohan_kishibe, 0).
-gender(giorno_giovanna, 0).
-gender(bruno_bucciarati, 0).
-gender(leone_abbacchio, 0).
-gender(guido_mista, 0).
-gender(narancia_ghirga, 0).
-gender(pannacotta_fugo, 0).
-gender(trish_una, 1).
-gender(diavolo, 0).
-gender(jolyne_cujoh, 1).
-gender(enrico_pucci, 0).
-gender(emporio_alnino, 0).
+person(jolyne_cujoh):-
+    question(male, n),
+    question(ggchar, y).
 
-main(jonathan_joestar, 1).
-main(dio_brando, 1).
-main(robert_e_o_speedwagon, 0).
-main(will_a_zeppel, 0).
-main(erina_pendleton, 0).
-main(joseph_joestar, 1).
-main(rudol_von_stroheim, 0).
-main(caesar_anthonio_zeppeli, 0).
-main(esidisi, 0).
-main(wamuu, 0).
-main(kars, 0).
-main(lisa_lisa, 0).
-main(suzi_q, 0).
-main(jotaro_kujo, 1).
-main(mohammed_avdol, 0).
-main(noriaki_kakyoin, 0).
-main(jean_pierre_polnareff, 0).
-main(iggy, 0).
-main(josuke_higashikata, 1).
-main(yoshikage_kira, 0).
-main(koichi_hirose, 0).
-main(okuyasu_nijimura, 0).
-main(rohan_kishibe, 0).
-main(giorno_giovanna, 1).
-main(bruno_bucciarati, 0).
-main(leone_abbacchio, 0).
-main(guido_mista, 0).
-main(narancia_ghirga, 0).
-main(pannacotta_fugo, 0).
-main(trish_una, 0).
-main(diavolo, 0).
-main(jolyne_cujoh, 1).
-main(enrico_pucci, 0).
-main(emporio_alnino, 0).
+person(joseph_joestar):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, y),
+    question(age,y).
 
-question1(X1):-	write("In what country was the character born?"),nl,
-                write("6. IDK"),nl,
-                write("5. USA"),nl,
-				write("4. Japan"),nl,
-                write("3. Pangea"),nl,
-				write("2. Germany"),nl,
-				write("1. Italy"),nl,
-				write("0. England"),nl,
-				read(X1),
-                unik_chek1(X,X1),
-                write(X).
+person(yoshikage_kira):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, n),
+    question(age, n).
+    
+person(trish_una):-
+    question(male, n),
+    question(ggchar, n),
+    question(good, y),
+    question(age, n).
 
-question2(X2):-	write("What gender is the character?"),nl,
-				write("1. Female"),nl,
-				write("0. Male"),nl,
-				read(X2),
-                unik_chek2(X,X2),
-                write(X).
+person(josuke_higashikata):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, y),
+    question(age, n),
+    question(hair, y).
 
-question3(X3):-	write("Is this the main character?"),nl,
-				write("1. Yes"),nl,
-				write("0. NO"),nl,
-				read(X3),
-                unik_chek3(X,X3),
-                write(X).
-		
-main_loop:- ask_question, 
+person(dio_brando):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, n),
+    question(age, y),
+    question(hair, n).
 
-unik_chek1(X,X1):- country(X,X1), country(Y,X1), 
-                X=\=Y, !, fail.
-unik_chek1(X):- country(X,X1).
+person(kars):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, n),
+    question(age, y),
+    question(hair, y).
 
-unik_chek2(X):- country(X,X1), country(Y,X1),
-                gender(X,X1), gender(Y,X1), 
-                X=\=Y, fail.
+person(noriaki_kakyoin):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, n),
+    question(hair, y).
 
-pr:-	question1(X1), question2(X2),question3(X3),
-        country(X,X1),gender(X,X2),main(X,X3),
-		write(X).
+person(jean_pierre_polnareff):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, y).
+
+person(jonathan_joestar):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, y),
+    question(age, n),
+    question(hair, n),
+    question(english, y).
+
+person(robert_e_o_speedwagon):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, n),
+    question(english, y).
+
+person(rudol_von_stroheim):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, n),
+    question(english, n).
+
+person(suzi_q):-
+    question(male, n),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, y),
+    question(english, n).
+
+person(jotaro_kujo):-
+    question(male, y),
+    question(ggchar, y),
+    question(good, y),
+    question(age, n),
+    question(hair, n),
+    question(english, n).
+
+person(erina_pendleton):-
+    question(male, n),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, n),
+    question(english, y),
+    question(erina, y).
+
+person(lisa_lisa):-
+    question(male, n),
+    question(ggchar, n),
+    question(good, y),
+    question(age, y),
+    question(hair, n),
+    question(english, y),
+    question(erina, n).
+
+person(esidisi):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, n),
+    question(age, y),
+    question(hair, n),
+    question(english, n),
+    question(horn, n).
+
+person(wamuu):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, n),
+    question(age, y),
+    question(hair, n),
+    question(english, n),
+    question(horn, y).
+
+person(caesar_anthonio_zeppeli, 1):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, n),
+    question(hair, n),
+    question(english, n),
+    question(stone, y).
+
+person(mohammed_avdol, 6):-
+    question(male, y),
+    question(ggchar, n),
+    question(good, y),
+    question(age, n),
+    question(hair, n),
+    question(english, n),
+    question(stone, n).
+
+question(male,Answer):-query('Is the character male?',Answer).
+question(ggchar,Answer):-query('This is the main character of the story?',Answer).
+question(good,Answer):-query('Is this a good character?',Answer).
+question(age,Answer):-query('Has the character lived long enough?',Answer).
+question(hair,Answer):-query('Does the character have good hair?',Answer).
+question(english,Answer):-query('Does the character speak English well?',Answer).
+question(erina,Answer):-query('Character name Erina?',Answer).
+question(horn,Answer):-query('Does the character have a horn?',Answer).
+question(stone,Answer):-query('Did the character have problems with the stone?',Answer).
+
+
+/*
+unik_chek1(will_a_zeppel, 1).
+unik_chek1(rudol_von_stroheim,2).
+unik_chek1(esidisi,3).
+unik_chek1(lisa_lisa,1).
+consult("JOJO_Akinator.pl").
+*/
 
 
 
