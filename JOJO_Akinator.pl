@@ -1,7 +1,12 @@
-/*country
+/*
 consult("JOJO_Akinator.pl").
 */
 
+/*
+Create persons
+person(+Person: atom) is det
+True, if all question(+Q_name: atom,+Answer:atom) are true
+*/
 person(jolyne_cujoh):-
     question(male, n),
     question(ggchar, y).
@@ -135,7 +140,8 @@ person(wamuu):-
     question(english, n),
     question(horn, y).
 
-person(caesar_anthonio_zeppeli, 1):-
+
+person(caesar_anthonio_zeppeli):-
     question(male, y),
     question(ggchar, n),
     question(good, y),
@@ -153,6 +159,11 @@ person(mohammed_avdol, 6):-
     question(english, n),
     question(stone, n).
 
+/*
+Create question
+question(+Q_name: atom,+Answer:atom) is det
+True, if query(Prompt,Answer) is true
+*/
 question(male,Answer):-query('Is the character male?',Answer).
 question(ggchar,Answer):-query('This is the main character of the story?',Answer).
 question(good,Answer):-query('Is this a good character?',Answer).
@@ -165,12 +176,46 @@ question(stone,Answer):-query('Did the character have problems with the stone?',
 
 
 /*
-unik_chek1(will_a_zeppel, 1).
-unik_chek1(rudol_von_stroheim,2).
-unik_chek1(esidisi,3).
-unik_chek1(lisa_lisa,1).
-consult("JOJO_Akinator.pl").
+main() is nondet
+True if we find person by user answers
 */
+main :-
+    retractall(askFalseQuestions(_)),
+    retractall(asked(_,_)),
+    person(Character),
+    !,
+    nl,
+    write('The character is '), write(Character), write(.), nl.
 
+/*
+main() is det
+Works when we fail find the person
+*/
+main :-
+    nl,
+    write('I dont know this character.'), nl.
 
+/*
+check_persons() is always true
+Check if only 1 person fits to current question
+*/
+check_persons:-(person(FirstPerson),person(SecondPerson),FirstPerson\==SecondPerson)->(retractall(askFalseQuestions(_)),true);true.
+
+/*
+Add answers into questions and check if input answer is equal to user_reply
+query(+Prompt:atom, +Answer:atom) is det
+True, if Answer is equal to Reply
+or
+True, if askFalseQuestions(1) is true
+*/
+query(Prompt,Answer) :-
+    (   (asked(Prompt, Reply);askFalseQuestions(1))-> true
+    ;   nl, write(Prompt), write(' (y/n)? '),
+        read(X),(X = y -> Reply = y ; Reply = n),
+        assert(askFalseQuestions(1)),
+        assert(asked(Prompt, Reply)),
+        check_persons
+    ),
+    (asked(Prompt,Reply))->(Reply=Answer);
+    (askFalseQuestions(1)->true).
 
