@@ -1,5 +1,5 @@
 /*
-consult("Russian_family_tree").
+consult("Laba_1/Russian_family_tree").
 */
 
 man(voeneg).

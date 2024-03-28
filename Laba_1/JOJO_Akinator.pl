@@ -1,5 +1,5 @@
 /*
-consult("JOJO_Akinator.pl").
+consult("Laba_1/JOJO_Akinator.pl").
 */
 
 /*

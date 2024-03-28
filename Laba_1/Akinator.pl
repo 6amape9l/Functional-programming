@@ -1,5 +1,5 @@
 /*
-consult("Akinator.pl").
+consult("Laba_1/Akinator.pl").
 */
           
 decl(java,0).          
