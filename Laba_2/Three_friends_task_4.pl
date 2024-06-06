@@ -19,5 +19,12 @@ pr_friends:-
     in_list(Info,[_,_,_,usa]),
     in_list(Info,[_,_,worst,_]),
 
+    not(in_list(Info,[michael,_,_,usa])),
+    not(in_list(Info,[simon,tennis,_,_])),
 
-    write(Info), !, fail.
+    %Вывод уроков
+    in_list(Info,[Name,_,_,australia]),
+    in_list(Info,[richard,Sport,_,_]),
+    
+    write("Australian friend: "), write(Name), nl,
+    write("Richard likes: "), write(Sport), nl, !.

@@ -22,7 +22,7 @@ fsum_chis(0, Ans, Ans):- !.
 fsum_chis(Num, CAns, Ans):- Temp is Num mod 10, fac(Temp, X), NCAns is CAns + X,
                              NNum is Num //10, fsum_chis(NNum, NCAns, Ans).
 
-main:- main(10000000).
+main:- main(1000000).
 main(2):- !.
 main(Num):- fsum_chis(Num, X), NNum is Num - 1,
             (X =:= Num ->
