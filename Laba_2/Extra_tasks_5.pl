@@ -18,7 +18,7 @@ sum_chis(Num, CAns, Ans):- NCAns is (CAns + (Num mod 10)), NNum is Num //10, sum
 
 /*
 Task 5.1
-Tail rec
+Tail rec   
 */
 sum_npr_del(Num, X) :- sum_npr_del(Num, 0, X, Num).
 sum_npr_del(_, X, CX, 1) :- CX is X + 1, !.

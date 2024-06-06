@@ -25,6 +25,7 @@ sum_chis(0, Ans, Ans):- !.
 sum_chis(Num, CAns, Ans):-  Temp is Num mod 10, NCAns is CAns + Temp,
                             NNum is Num //10, sum_chis(NNum, NCAns, Ans).
                             
+                            
 add_digit1(ThreeDigitNumber, FourDigitNumber) :-
 
     number_codes(ThreeDigitNumber, [D1, D2, D3]),
